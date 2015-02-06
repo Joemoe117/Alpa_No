@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+<navigation-rule>
+	<from-view-id>/*</from-view-id>
+	<navigation-case>
+		<from-outcome>accueil</from-outcome>
+		<to-view-id>/page_accueil/accueil.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>gestion_clients</from-outcome>
+		<to-view-id>/page_client/client.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>connexion</from-outcome>
+		<to-view-id>/page_identification/identification.xhtml</to-view-id>
+		<redirect></redirect>
+	</navigation-case>
+</navigation-rule>
+
+
+<validator>
+	<validator-id>passwordValidator</validator-id>
+	<validator-class>validator.PasswordValidator</validator-class>
+</validator>
+
+<application>
+       <message-bundle>prop/prop</message-bundle>
+</application>
+    
+    <lifecycle>
+   		 <phase-listener>
+
+			manager.MessagesSupport
+
+		</phase-listener>
+	</lifecycle>
+	
+</faces-config>
