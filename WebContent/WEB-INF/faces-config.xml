@@ -24,20 +24,12 @@
 	</navigation-case>
 </navigation-rule>
 
-
-<validator>
-	<validator-id>passwordValidator</validator-id>
-	<validator-class>validator.PasswordValidator</validator-class>
-</validator>
-
 <application>
        <message-bundle>prop/prop</message-bundle>
 </application>
     
     <lifecycle>
    		 <phase-listener>
-
-			manager.MessagesSupport
 
 		</phase-listener>
 	</lifecycle>

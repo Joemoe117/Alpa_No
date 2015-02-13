@@ -25,8 +25,8 @@
 					<td>
 						<h:inputText 
 							id="ident" 
-							value="#{manager.identification.ident}"
-							binding="#{ident}">
+							value="#{manager.login}"
+							binding="#{login}">
 							<!-- au moins 3 lettre -->
 							<f:validateLength minimum="3"/>
 						</h:inputText>
@@ -36,9 +36,8 @@
 				<tr>
 					<td><h:outputText value="Mot de passe :" /></td>
 					<td>
-						<h:inputText id="mdp" value="#{manager.identification.mdp}" >
-							<f:validator validatorId="passwordValidator"/>
-							<f:attribute name="ident" value="#{ident}" />
+						<h:inputText id="mdp" value="#{manager.password}" >
+							<f:attribute name="ident" value="#{password}" />
 						</h:inputText>
 					</td>
 					<td><h:message for="mdp" /></td>
