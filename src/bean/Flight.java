@@ -45,7 +45,7 @@ public class Flight {
         this.description = description;
     }
 
-    public Plane getPlaneByIdPlane() {
+    public Plane getPlane() {
         return plane;
     }
 
@@ -53,7 +53,7 @@ public class Flight {
         this.plane = plane;
     }
 
-    public Collection<Panel> getPanelsById() {
+    public Collection<Panel> getPanels() {
         return panels;
     }
 

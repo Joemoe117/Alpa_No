@@ -9,10 +9,12 @@ public class Manager {
 
 	public String login;
 	public String password;
+	public String inputHotelName;
 	
 	public Manager(){
 		login = "";
 		password ="";
+		inputHotelName = "";
 	}
 	
 	

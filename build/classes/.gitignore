@@ -1,4 +1,6 @@
-/manager/
+/META-INF/
 /bean/
 /dao/
-/META-INF/
+/manager/
+/prop/
+/validator/
