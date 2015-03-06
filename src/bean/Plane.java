@@ -1,7 +1,15 @@
 package bean;
 
-import javax.persistence.*;
 import java.util.Collection;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author baptiste
@@ -9,13 +17,25 @@ import java.util.Collection;
  * @date 06/02/15
  */
 @Entity
+@Table(name = "plane")
 public class Plane {
-    private int id;
-    private String name;
-    private Collection<Flight> flightsById;
-
+	
     @Id
     @Column(name = "id")
+    private int id;
+    
+    @Column(name = "name")
+    private String name;
+    
+    @OneToMany
+    @JoinTable(
+    		name = "flight",
+    		joinColumns = @JoinColumn(name = "id_plane"),
+    		inverseJoinColumns = @JoinColumn(name= "id")
+    		)
+    private Collection<Flight> flights;
+
+
     public int getId() {
         return id;
     }
@@ -24,8 +44,7 @@ public class Plane {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
+
     public String getName() {
         return name;
     }
@@ -33,33 +52,12 @@ public class Plane {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Plane plane = (Plane) o;
-
-        if (id != plane.id) return false;
-        if (name != null ? !name.equals(plane.name) : plane.name != null) return false;
-
-        return true;
+    
+    public Collection<Flight> getFlights() {
+        return flights;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "planeByIdPlane")
-    public Collection<Flight> getFlightsById() {
-        return flightsById;
-    }
-
-    public void setFlightsById(Collection<Flight> flightsById) {
-        this.flightsById = flightsById;
+    public void setFlights(Collection<Flight> flights) {
+        this.flights = flights;
     }
 }

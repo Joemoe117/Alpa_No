@@ -10,12 +10,19 @@ import java.util.Collection;
  */
 @Entity
 public class Hotel {
-    private int id;
-    private String name;
-    private Collection<LinkPanelHotel> linkPanelHotelsById;
 
-    @Id
+	@Id
     @Column(name = "id")
+    private int id;
+    
+    @Basic
+    @Column(name = "name")
+    private String name;
+    
+    @OneToMany
+    @JoinColumn(name = "id_hotel")
+    private Collection<LinkPanelHotel> panels;
+
     public int getId() {
         return id;
     }
@@ -24,8 +31,6 @@ public class Hotel {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -34,32 +39,11 @@ public class Hotel {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Hotel hotel = (Hotel) o;
-
-        if (id != hotel.id) return false;
-        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-
-        return true;
+    public Collection<LinkPanelHotel> getLinkPanelHotels() {
+        return panels;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "hotelByIdHotel")
-    public Collection<LinkPanelHotel> getLinkPanelHotelsById() {
-        return linkPanelHotelsById;
-    }
-
-    public void setLinkPanelHotelsById(Collection<LinkPanelHotel> linkPanelHotelsById) {
-        this.linkPanelHotelsById = linkPanelHotelsById;
+    public void setLinkPanelHotels(Collection<LinkPanelHotel> panels) {
+        this.panels = panels;
     }
 }

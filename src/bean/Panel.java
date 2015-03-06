@@ -12,11 +12,10 @@ import java.util.Collection;
 @Entity
 public class Panel {
     private int id;
-    private int idFlight;
     private Timestamp dateBegin;
     private Timestamp dateEnd;
-    private Collection<LinkPanelHotel> linkPanelHotelsById;
-    private Flight flightByIdFlight;
+    private Collection<LinkPanelHotel> panels;
+    private Flight flight;
 
     @Id
     @Column(name = "id")
@@ -26,16 +25,6 @@ public class Panel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_flight")
-    public int getIdFlight() {
-        return idFlight;
-    }
-
-    public void setIdFlight(int idFlight) {
-        this.idFlight = idFlight;
     }
 
     @Basic
@@ -58,46 +47,23 @@ public class Panel {
         this.dateEnd = dateEnd;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Panel panel = (Panel) o;
-
-        if (id != panel.id) return false;
-        if (idFlight != panel.idFlight) return false;
-        if (dateBegin != null ? !dateBegin.equals(panel.dateBegin) : panel.dateBegin != null) return false;
-        if (dateEnd != null ? !dateEnd.equals(panel.dateEnd) : panel.dateEnd != null) return false;
-
-        return true;
+    @OneToMany()
+    @JoinColumn(name = "id_flight")
+    public Collection<LinkPanelHotel> getPanels() {
+        return panels;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + idFlight;
-        result = 31 * result + (dateBegin != null ? dateBegin.hashCode() : 0);
-        result = 31 * result + (dateEnd != null ? dateEnd.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "panelByIdPanel")
-    public Collection<LinkPanelHotel> getLinkPanelHotelsById() {
-        return linkPanelHotelsById;
-    }
-
-    public void setLinkPanelHotelsById(Collection<LinkPanelHotel> linkPanelHotelsById) {
-        this.linkPanelHotelsById = linkPanelHotelsById;
+    public void setPanels(Collection<LinkPanelHotel> panels) {
+        this.panels = panels;
     }
 
     @ManyToOne
     @JoinColumn(name = "id_flight", referencedColumnName = "id", nullable = false)
-    public Flight getFlightByIdFlight() {
-        return flightByIdFlight;
+    public Flight getFlight() {
+        return flight;
     }
 
-    public void setFlightByIdFlight(Flight flightByIdFlight) {
-        this.flightByIdFlight = flightByIdFlight;
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 }
