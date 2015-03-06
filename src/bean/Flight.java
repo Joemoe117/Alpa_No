@@ -9,6 +9,7 @@ import java.util.Collection;
  * @date 06/02/15
  */
 @Entity
+@Table(name = "flight")
 public class Flight {
 	
     @Id
