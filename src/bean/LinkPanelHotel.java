@@ -10,51 +10,32 @@ import javax.persistence.*;
 @Entity
 @Table(name = "link_panel_hotel", schema = "", catalog = "alpa_no")
 public class LinkPanelHotel {
-    private int idPanel;
-    private int idHotel;
-    private Hotel hotelByIdHotel;
-    private Panel panelByIdPanel;
-
-    @Basic
-    @Column(name = "id_panel")
-    public int getIdPanel() {
-        return idPanel;
-    }
-
-    public void setIdPanel(int idPanel) {
-        this.idPanel = idPanel;
-    }
-
-    @Basic
-    @Column(name = "id_hotel")
-    public int getIdHotel() {
-        return idHotel;
-    }
-
-    public void setIdHotel(int idHotel) {
-        this.idHotel = idHotel;
-    }
-
+	
+    @Id
+    @Column(name = "id")
+	private int id;
+    
     @ManyToOne
     @JoinColumn(name = "id_hotel", referencedColumnName = "id", nullable = false)
-    public Hotel getHotelByIdHotel() {
-        return hotelByIdHotel;
-    }
-
-    public void setHotelByIdHotel(Hotel hotelByIdHotel) {
-        this.hotelByIdHotel = hotelByIdHotel;
-    }
-
+    private Hotel hotel;
+    
     @ManyToOne
     @JoinColumn(name = "id_panel", referencedColumnName = "id", nullable = false)
-    public Panel getPanelByIdPanel() {
-        return panelByIdPanel;
+    private Panel panel;
+
+    public Hotel getHotelByIdHotel() {
+        return hotel;
     }
 
-    public void setPanelByIdPanel(Panel panelByIdPanel) {
-        this.panelByIdPanel = panelByIdPanel;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
-    private String id;
+    public Panel getPanel() {
+        return panel;
+    }
 
+    public void setPanel(Panel panel) {
+        this.panel = panel;
+    }
 }
