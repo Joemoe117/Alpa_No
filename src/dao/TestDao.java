@@ -26,10 +26,11 @@ public class TestDao {
 		*/
 		
 		// Liste des vols
+		/*
 		List<Flight> flights = FlightDao.getAllFlights();
 		for (Flight flight : flights) {
 			System.out.println(flight.getDescription());
 		}
-		
+		*/
 	}
 }

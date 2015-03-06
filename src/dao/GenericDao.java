@@ -17,16 +17,23 @@ import org.hibernate.service.ServiceRegistry;
  */
 public abstract class GenericDao {
 
+	private static EntityManager em;
+	
 	/**
 	 * get an active session
 	 * @return
 	 */
     public static EntityManager getEntityManager(){
-		EntityManagerFactory emf = 
-				Persistence.createEntityManagerFactory(
-						"tphibernate");
-		EntityManager em = emf.createEntityManager();
-    	return em;
+    	if (em != null){
+    		return em;
+    	} else {
+    		EntityManagerFactory emf = 
+    				Persistence.createEntityManagerFactory(
+    						"tphibernate");
+    		EntityManager em = emf.createEntityManager();
+    		return em;
+    	}
+    	
     }
     
 	
