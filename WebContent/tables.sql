@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Ven 06 Février 2015 à 14:44
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- GÃ©nÃ©rÃ© le: Ven 06 Mars 2015 Ã  14:56
+-- Version du serveur: 5.5.41-0ubuntu0.14.04.1
+-- Version de PHP: 5.5.9-1ubuntu4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `alpa_no`
+-- Base de donnÃ©es: `alpa_no`
 --
 
 -- --------------------------------------------------------
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `flight` (
 
 INSERT INTO `flight` (`id`, `id_plane`, `description`) VALUES
 (1, 1, 'Cet avion sait voler.'),
-(2, 2, 'Cet avion ne vole pas très très bien.');
+(2, 2, 'Cet avion ne vole pas tr?s tr?s bien.');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `hotel`
@@ -80,7 +80,8 @@ CREATE TABLE IF NOT EXISTS `hotel` (
 
 INSERT INTO `hotel` (`id`, `name`) VALUES
 (1, 'Hotel Carlton'),
-(2, 'Hotel California');
+(2, 'Hotel California'),
+(3, 'Hotel Wonderland');
 
 -- --------------------------------------------------------
 
@@ -89,20 +90,21 @@ INSERT INTO `hotel` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `link_panel_hotel` (
-  `id_panel` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_hotel` int(11) NOT NULL,
-  KEY `id_panel` (`id_panel`),
-  KEY `id_hotel` (`id_hotel`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_panel` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `link_panel_hotel`
 --
 
-INSERT INTO `link_panel_hotel` (`id_panel`, `id_hotel`) VALUES
-(3, 1),
-(3, 2),
-(4, 2);
+INSERT INTO `link_panel_hotel` (`id`, `id_hotel`, `id_panel`) VALUES
+(1, 1, 3),
+(2, 2, 3),
+(3, 3, 4),
+(4, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -150,7 +152,7 @@ INSERT INTO `plane` (`id`, `name`) VALUES
 (4, 'Sepahan Airlines HESA IrAn-140-100 ');
 
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables exportÃ©es
 --
 
 --
@@ -158,13 +160,6 @@ INSERT INTO `plane` (`id`, `name`) VALUES
 --
 ALTER TABLE `flight`
   ADD CONSTRAINT `FK_plane` FOREIGN KEY (`id_plane`) REFERENCES `plane` (`id`);
-
---
--- Contraintes pour la table `link_panel_hotel`
---
-ALTER TABLE `link_panel_hotel`
-  ADD CONSTRAINT `FK_hotel` FOREIGN KEY (`id_hotel`) REFERENCES `hotel` (`id`),
-  ADD CONSTRAINT `FK_panel` FOREIGN KEY (`id_panel`) REFERENCES `panel` (`id`);
 
 --
 -- Contraintes pour la table `panel`

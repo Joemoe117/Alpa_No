@@ -9,13 +9,13 @@ import java.util.Collection;
  * @date 06/02/15
  */
 @Entity
+@Table(name = "hotel")
 public class Hotel {
 
 	@Id
     @Column(name = "id")
     private int id;
     
-    @Basic
     @Column(name = "name")
     private String name;
     
