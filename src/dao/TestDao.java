@@ -2,8 +2,7 @@ package dao;
 
 import java.util.List;
 
-import bean.Flight;
-import bean.Plane;
+import bean.Hotel;
 
 public class TestDao {
 
@@ -31,6 +30,19 @@ public class TestDao {
 		for (Flight flight : flights) {
 			System.out.println(flight.getDescription());
 		}
+		*/
+		/*
+		List<Hotel> hotels = HotelDao.getAllHotels();
+		for (Hotel hotel : hotels) {
+			System.out.println(hotel.getName());
+		}
+		*/
+		
+		// Add hotel
+		/*
+		Hotel hotel = new Hotel();
+		hotel.setName("Hotel Wonderland");
+		HotelDao.add(hotel);
 		*/
 	}
 }
