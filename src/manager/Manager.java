@@ -11,7 +11,8 @@ public class Manager {
 	public String password;
 	
 	public Manager(){
-		
+		login = "";
+		password ="";
 	}
 	
 	
@@ -19,6 +20,28 @@ public class Manager {
 		if (login.equals("admin")){
 			System.out.println("connexion reussie");
 		}
-		System.out.println("connexion raté");
+		System.out.println("connexion ratï¿½");
 	}
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 }

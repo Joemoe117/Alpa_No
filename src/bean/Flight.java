@@ -10,14 +10,23 @@ import java.util.Collection;
  */
 @Entity
 public class Flight {
-    private int id;
-    private int idPlane;
-    private String description;
-    private Plane planeByIdPlane;
-    private Collection<Panel> panelsById;
-
+	
     @Id
     @Column(name = "id")
+    private int id;
+    
+    @Basic
+    @Column(name = "description")
+    private String description;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_plane", referencedColumnName = "id", nullable = false)
+    private Plane plane;
+    
+    @OneToMany(mappedBy = "panels")
+    private Collection<Panel> panels;
+
+
     public int getId() {
         return id;
     }
@@ -26,18 +35,7 @@ public class Flight {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_plane")
-    public int getIdPlane() {
-        return idPlane;
-    }
 
-    public void setIdPlane(int idPlane) {
-        this.idPlane = idPlane;
-    }
-
-    @Basic
-    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -46,44 +44,19 @@ public class Flight {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Flight flight = (Flight) o;
-
-        if (id != flight.id) return false;
-        if (idPlane != flight.idPlane) return false;
-        if (description != null ? !description.equals(flight.description) : flight.description != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + idPlane;
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id_plane", referencedColumnName = "id", nullable = false)
     public Plane getPlaneByIdPlane() {
-        return planeByIdPlane;
+        return plane;
     }
 
-    public void setPlaneByIdPlane(Plane planeByIdPlane) {
-        this.planeByIdPlane = planeByIdPlane;
+    public void setPlane(Plane plane) {
+        this.plane = plane;
     }
 
-    @OneToMany(mappedBy = "flightByIdFlight")
     public Collection<Panel> getPanelsById() {
-        return panelsById;
+        return panels;
     }
 
-    public void setPanelsById(Collection<Panel> panelsById) {
-        this.panelsById = panelsById;
+    public void setPanels(Collection<Panel> panels) {
+        this.panels = panels;
     }
 }

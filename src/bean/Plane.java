@@ -10,12 +10,20 @@ import java.util.Collection;
  */
 @Entity
 public class Plane {
-    private int id;
-    private String name;
-    private Collection<Flight> flightsById;
-
+	
     @Id
     @Column(name = "id")
+    private int id;
+    
+    @Basic
+    @Column(name = "name")
+    private String name;
+    
+    @OneToMany
+    @JoinColumn(name = "id_plane")
+    private Collection<Flight> flights;
+
+
     public int getId() {
         return id;
     }
@@ -24,8 +32,7 @@ public class Plane {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
+
     public String getName() {
         return name;
     }
@@ -33,33 +40,12 @@ public class Plane {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Plane plane = (Plane) o;
-
-        if (id != plane.id) return false;
-        if (name != null ? !name.equals(plane.name) : plane.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "planeByIdPlane")
+    
     public Collection<Flight> getFlightsById() {
-        return flightsById;
+        return flights;
     }
 
-    public void setFlightsById(Collection<Flight> flightsById) {
-        this.flightsById = flightsById;
+    public void setFlightsById(Collection<Flight> flights) {
+        this.flights = flights;
     }
 }
