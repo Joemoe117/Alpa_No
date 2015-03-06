@@ -6,8 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	>
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <f:view contentType="text/html">
 
@@ -17,9 +16,8 @@
 	</h:head>
 
 	<h:body>
-
+		<ui:include src="../template/header.xhtml"/>
 		<ui:include src="../commun_page_menu/menu.xhtml" />
-			
 		<ui:insert name="body">Corps de page</ui:insert>
 
 	</h:body>
