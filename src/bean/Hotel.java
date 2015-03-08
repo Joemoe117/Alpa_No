@@ -1,7 +1,15 @@
 package bean;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author baptiste
@@ -9,6 +17,7 @@ import java.util.Collection;
  * @date 06/02/15
  */
 @Entity
+@Table(name = "hotel")
 public class Hotel {
 
 	@Id
@@ -23,6 +32,13 @@ public class Hotel {
     @JoinColumn(name = "id_hotel")
     private Collection<LinkPanelHotel> panels;
 
+    /**
+     * Default constructor
+     */
+    public Hotel(){
+    	panels = new ArrayList<>();
+    }
+    
     public int getId() {
         return id;
     }
