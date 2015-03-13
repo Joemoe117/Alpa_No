@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import bean.Flight;
 import bean.Plane;
 
 /**
@@ -28,6 +29,36 @@ public class PlaneDao {
 		
 		list = query.getResultList();
 		return list;
+	}
+
+	/**
+	 * Add a flight to the database
+	 * @param flight
+	 */
+	public static void add(Flight flight) {
+		EntityManager em = GenericDao.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(flight);
+		em.getTransaction().commit();
+	}
+
+	/**
+	 * Get one plane by his id
+	 * @return
+	 * 		the plane with the given ID
+	 * 		false if the plane does not exist
+	 */
+	public static Plane getById(int id) {
+		EntityManager em = GenericDao.getEntityManager();
+		Query query = em.createQuery("from Plane as p where p.id = :id ");
+		query.setParameter("id", id);
+		
+		List<Plane> planes = query.getResultList();
+		
+		if (!planes.isEmpty()){
+			return planes.get(0);
+		}
+		return null;
 	}
 	
 }

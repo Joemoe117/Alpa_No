@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition template="/commun_modele/modele.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="title">
+		<title>Ajouter un vol</title>
+	</ui:define>
+
+	<ui:define name="body">
+
+		<h1>Ajouter un vol</h1>
+
+		<h:form>
+			<h:panelGrid>
+				<!-- Choix de l'avion -->
+				<h:outputLabel value="Avion :" />
+				<h:selectOneMenu value="#{managerFlight.inputIdAvion}">
+					<f:selectItems
+						value="#{managerFlight.planes}" 
+						var="p"
+						itemLabel="#{p.name}" 
+						itemValue="#{p.id}" 
+					/>
+				</h:selectOneMenu>
+
+				<!-- Description de l'avion -->
+				<h:outputLabel value="Description du vol" />
+				<h:inputTextarea rows="5" cols="80" value="#{managerFlight.inputDescription}" />
+				
+				<!-- Bouton submit -->
+				<h:commandButton value="Créer le vol" action="#{managerFlight.createFlight}" />
+			</h:panelGrid>
+		</h:form>
+
+		<h:link value="Revenir à la liste des vols" outcome="listFlights" />
+
+	</ui:define>
+
+</ui:composition>
