@@ -21,7 +21,10 @@
 		<h:form>
 		    <h:panelGrid>
 		        <h:outputLabel value="Nom de l'hotel :"/>
-		        <h:inputText value="#{manager.inputHotelName}" />
+		        <h:inputText id="hotelName" value="#{manager.inputHotelName}" required="true">
+		        	<f:validateLength minimum="4" maximum="100" />
+		        </h:inputText>
+		        <h:message for="hotelName" style="color:red" />
 		        <h:commandButton value="Créer" action="#{manager.createHotel}"/>
 		    </h:panelGrid>
 		</h:form>
