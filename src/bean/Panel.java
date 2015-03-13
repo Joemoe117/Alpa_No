@@ -10,15 +10,28 @@ import java.util.Collection;
  * @date 06/02/15
  */
 @Entity
+@Table(name = "panel")
 public class Panel {
-    private int id;
-    private Timestamp dateBegin;
-    private Timestamp dateEnd;
-    private Collection<LinkPanelHotel> panels;
-    private Flight flight;
-
+	
     @Id
     @Column(name = "id")
+    private int id;
+    
+    @Column(name = "date_begin")
+    private Timestamp dateBegin;
+    
+    @Column(name = "date_end")
+    private Timestamp dateEnd;
+    
+    @OneToMany()
+    @JoinColumn(name = "id_panel")
+    private Collection<LinkPanelHotel> panels;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_flight", referencedColumnName = "id", nullable = false)
+    private Flight flight;
+
+
     public int getId() {
         return id;
     }
@@ -27,8 +40,7 @@ public class Panel {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "date_begin")
+
     public Timestamp getDateBegin() {
         return dateBegin;
     }
@@ -37,8 +49,6 @@ public class Panel {
         this.dateBegin = dateBegin;
     }
 
-    @Basic
-    @Column(name = "date_end")
     public Timestamp getDateEnd() {
         return dateEnd;
     }
@@ -47,8 +57,6 @@ public class Panel {
         this.dateEnd = dateEnd;
     }
 
-    @OneToMany()
-    @JoinColumn(name = "id_flight")
     public Collection<LinkPanelHotel> getPanels() {
         return panels;
     }

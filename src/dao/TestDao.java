@@ -3,7 +3,8 @@ package dao;
 import java.util.List;
 
 import bean.Flight;
-import bean.Plane;
+import bean.LinkPanelHotel;
+import bean.Panel;
 
 public class TestDao {
 
@@ -26,9 +27,17 @@ public class TestDao {
 		*/
 		
 		// Liste des vols
+		
 		List<Flight> flights = FlightDao.getAllFlights();
 		for (Flight flight : flights) {
 			System.out.println(flight.getDescription());
+		}
+		
+		
+		// Liste des panels
+		Panel panel = PanelDao.getPanelByFlight(flights.get(0));
+		for (LinkPanelHotel link : panel.getPanels()) {
+			System.out.println(link.getHotel().getName());
 		}
 		
 	}

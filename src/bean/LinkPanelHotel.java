@@ -23,7 +23,7 @@ public class LinkPanelHotel {
     @JoinColumn(name = "id_panel", referencedColumnName = "id", nullable = false)
     private Panel panel;
 
-    public Hotel getHotelByIdHotel() {
+    public Hotel getHotel() {
         return hotel;
     }
 
