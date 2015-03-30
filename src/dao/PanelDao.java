@@ -25,4 +25,22 @@ public class PanelDao {
 		
 		return (Panel) query.getResultList().get(0);
 	}
+	
+	/**
+	 * Check if the hotel with the given id exists in database
+	 * @param id
+	 * 		id of the hotel to check
+	 * @return
+	 * 		true if this hotel exists
+	 * 		false otherwise
+	 */
+	public static boolean hotelWithIdExist(Integer id){
+		
+		EntityManager em = GenericDao.getEntityManager();
+		
+		Query query = em.createQuery("from Hotel as h where h.id = :id");
+		query.setParameter("id", id);
+		
+		return query.getResultList() != null;
+	}
 }

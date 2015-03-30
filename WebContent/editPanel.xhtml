@@ -30,6 +30,16 @@
 					/>
 				</h:selectManyMenu>
 				
+				<h:outputLabel value="Date de début :" />
+				<h:inputText value="#{managerPanel.beginDate}">  
+					<f:convertDateTime pattern="yyyy-MM-dd"/>  
+				</h:inputText>
+
+				<h:outputLabel value="Date de fin :" />
+				<h:inputText value="#{managerPanel.endDate}">  
+					<f:convertDateTime pattern="yyyy-MM-dd"/>  
+				</h:inputText>
+				
 				<!-- Bouton submit -->
 				<h:commandButton value="Enregistrer" action="#{managerPanel.save}" />
 			
