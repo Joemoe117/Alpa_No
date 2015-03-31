@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.servlet.http.HttpSession;
 
 import bean.Hotel;
 import dao.HotelDao;
@@ -61,8 +62,7 @@ public class ManagerPanel {
 	 * Save the current panel
 	 */
 	public void save(){
-		System.out.println(inputHotels);
-	
+		
 		// check if all selected hotels exist in database
 		// ie, user does not modify manually the html
 		boolean isOk = true;

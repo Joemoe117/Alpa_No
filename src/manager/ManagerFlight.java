@@ -1,9 +1,12 @@
 package manager;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.context.FacesContextFactory;
 
 import bean.Flight;
 import bean.Plane;
@@ -54,6 +57,25 @@ public class ManagerFlight {
 		// need to reload flights
 		loadFlights();
 	}
+	
+	/**
+	 * Display the details of a flight
+	 */
+	public void get(Flight f){
+		System.out.println("Test ");
+		System.out.println(f.toString());
+	}
+	
+	/**
+	 * Delete a flight
+	 */
+	public void delete(Flight f){
+		System.out.println("delete a flight");
+		FlightDao.delete(f);
+		
+		loadFlights();
+	}
+	
 	
 	public void loadFlights(){
 		flights = FlightDao.getAllFlights();

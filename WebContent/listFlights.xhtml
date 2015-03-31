@@ -18,25 +18,39 @@
 	
 		<h1>Liste des vols</h1>
 		
-		<h:dataTable value="#{managerFlight.flights}" var="o">
-		
-			<h:column>
-				<f:facet name="ID"></f:facet>
-				#{o.id}
-			</h:column>
-		
-			<h:column>
-				<f:facet name="Avion"></f:facet>
-				#{o.plane.name}
-			</h:column>
+		<h:form>
+			<h:dataTable value="#{managerFlight.flights}" var="o">
 			
-			<h:column>
-				<f:facet name="Description"></f:facet>
-				#{o.description}
-			</h:column>
-		
-		
-		</h:dataTable>
+				<h:column>
+					<f:facet name="ID"></f:facet>
+					#{o.id}
+				</h:column>
+			
+				<h:column>
+					<f:facet name="Avion"></f:facet>
+					#{o.plane.name}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="Description"></f:facet>
+					#{o.description}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="Détails"></f:facet>
+					<h:commandButton value="Détails" action="#{managerFlight.get(o)}"></h:commandButton>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="Suppression"></f:facet>
+					<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}">
+						<f:param name="flight" value="#{o}"></f:param>
+					</h:commandButton>
+				</h:column>
+			
+			
+			</h:dataTable>
+		</h:form>
 		
 		<h:link value="Ajouter un vol" outcome="addFlight" />
 
