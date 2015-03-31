@@ -19,7 +19,7 @@
 		<h1>Liste des vols</h1>
 		
 		<h:form>
-			<h:dataTable value="#{managerFlight.flights}" var="o">
+			<h:dataTable value="#{managerFlight.flights}" var="o" styleClass="table">
 			
 				<h:column>
 					<f:facet name="ID"></f:facet>
@@ -37,17 +37,10 @@
 				</h:column>
 				
 				<h:column>
-					<f:facet name="Détails"></f:facet>
+					<f:facet name="Actions"></f:facet>
 					<h:commandButton value="Détails" action="#{managerFlight.get(o)}"></h:commandButton>
+					<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}"></h:commandButton>
 				</h:column>
-				
-				<h:column>
-					<f:facet name="Suppression"></f:facet>
-					<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}">
-						<f:param name="flight" value="#{o}"></f:param>
-					</h:commandButton>
-				</h:column>
-			
 			
 			</h:dataTable>
 		</h:form>
