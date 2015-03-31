@@ -8,6 +8,11 @@ import javax.persistence.Query;
 
 import bean.Flight;
 
+/**
+ * Flights DAO
+ * @author baptiste
+ *
+ */
 public class FlightDao {
 
 	/**
@@ -27,12 +32,11 @@ public class FlightDao {
 	}
 
 	/**
-	 * Deleet a flight from the database
+	 * Delete a flight from the database
 	 * @param f
 	 * 		the flight to delete
 	 */
 	public static void delete(Flight f) {
-		// TODO Auto-generated method stub
 		EntityManager em = GenericDao.getEntityManager();
 		em.getTransaction().begin();
 		
