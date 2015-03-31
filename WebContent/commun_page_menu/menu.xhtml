@@ -6,30 +6,41 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
->
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-<link type='text/css' href='assets/css/menu.css'	rel='stylesheet' />
+	<script type="text/javascript" src="assets/js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-ui.js"></script>	
+	<script type="text/javascript" src="assets/js/src/datepicker.js"></script>
+	<link type='text/css' href='assets/js/jquery-ui.css' rel='stylesheet' />
+	<link type='text/css' href='assets/js/jquery-ui.structure.css' rel='stylesheet' />
+	<link type='text/css' href='assets/js/jquery-ui.theme.css' rel='stylesheet' />
+	<link type='text/css' href='assets/css/menu.css' rel='stylesheet' />
+	<link type='text/css' href='assets/css/widgets.css' rel='stylesheet' />
 
-<h:form id="form_menu">
-<div id="menus">
-	<div id="main-menu">
-		<ul>
-			<li class=" first"><h:commandLink  value="Vols" action="#" /><span class="spacer"></span>
+	<h:form id="form_menu">
+		<div id="menus">
+			<div id="main-menu">
 				<ul>
-					<li class="first"><h:commandLink  value="Ajouter un vol" action="addFlight" /></li>
-					<li class="first"><h:commandLink  value="Liste des vols" action="listFlights" /></li>
+					<li class=" first"><h:commandLink value="Vols"
+							action="listFlights" /><span class="spacer"></span>
+						<ul>
+							<li class="first"><h:commandLink value="Ajouter un vol"
+									action="addFlight" /></li>
+							<li class="first"><h:commandLink value="Liste des vols"
+									action="listFlights" /></li>
+						</ul></li>
+					<li class=" first"><h:commandLink value="Hôtels"
+							action="listHotels" /><span class="spacer"></span>
+						<ul>
+							<li class="first"><h:commandLink value="Ajouter un hôtel"
+									action="addHotel" /></li>
+							<li class="first"><h:commandLink value="Liste des hôtels"
+									action="listHotels" /></li>
+						</ul></li>
+					<li class=" first"><h:commandLink value="Simulation"
+							action="simulation" /><span class="spacer"></span></li>
 				</ul>
-			</li>
-			<li class=" first"><h:commandLink  value="Hôtels" action="#" /><span class="spacer"></span>
-				<ul>
-					<li class="first"><h:commandLink  value="Ajouter un hôtel" action="addHotel" /></li>
-					<li class="first"><h:commandLink  value="Liste des hôtels" action="listHotels" /></li>
-				</ul>
-			</li>
-			<li class=" first"><h:commandLink  value="Simulation" action="simulation" /><span class="spacer"></span></li>
-		</ul>
-	</div>
-</div>
-</h:form>
+			</div>
+		</div>
+	</h:form>
 </ui:composition>
