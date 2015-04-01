@@ -15,34 +15,36 @@
 
 	<ui:define name="body">
 
-		<h1>Ajouter un vol</h1>
+		<h:panelGroup layout="block" styleClass="container">
 
-		<h:form>
-			<h:panelGrid>
-				<!-- Choix de l'avion -->
-				<h:outputLabel value="Avion :" />
-				<h:selectOneMenu value="#{managerFlight.inputIdAvion}">
-					<f:selectItems
-						value="#{managerFlight.planes}" 
-						var="p"
-						itemLabel="#{p.name}" 
-						itemValue="#{p.id}" 
-					/>
-				</h:selectOneMenu>
+			<h1>Ajouter un vol</h1>
 
-				<!-- Description de l'avion -->
-				<h:outputLabel value="Description du vol" />
-				<h:inputTextarea id="flightDesc" rows="5" cols="80" value="#{managerFlight.inputDescription}" required="true">
-					<f:validateLength minimum="4" maximum="255" />
-				</h:inputTextarea>
-				<h:message for="flightDesc" style="color:red" />
-				<!-- Bouton submit -->
-				<h:commandButton value="Créer le vol" action="#{managerFlight.createFlight}" />
-			</h:panelGrid>
-		</h:form>
+			<h:form>
+				<h:panelGrid>
+					<!-- Choix de l'avion -->
+					<h:outputLabel value="Avion :" />
+					<h:selectOneMenu value="#{managerFlight.inputIdAvion}"
+						styleClass="browser-default">
+						<f:selectItems value="#{managerFlight.planes}" var="p"
+							itemLabel="#{p.name}" itemValue="#{p.id}" />
+					</h:selectOneMenu>
 
-		<h:link value="Revenir à la liste des vols" outcome="listFlights" />
+					<!-- Description de l'avion -->
+					<h:outputLabel value="Description du vol" />
+					<h:inputTextarea id="flightDesc" rows="5" cols="80"
+						value="#{managerFlight.inputDescription}" required="true">
+						<f:validateLength minimum="4" maximum="255" />
+					</h:inputTextarea>
+					<h:message for="flightDesc" style="color:red" />
+					<!-- Bouton submit -->
+					<h:commandButton value="Créer le vol"
+						action="#{managerFlight.createFlight}" />
+				</h:panelGrid>
+			</h:form>
 
+			<h:link value="Revenir à la liste des vols" outcome="listFlights" />
+
+		</h:panelGroup>
 	</ui:define>
 
 </ui:composition>

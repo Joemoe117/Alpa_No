@@ -22,6 +22,7 @@ public class ManagerOneFlight {
 	public Panel panel;
 	
 	public Flight flight;
+	
 	/**
 	 * Default constructor
 	 */

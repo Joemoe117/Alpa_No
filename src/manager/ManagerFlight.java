@@ -1,13 +1,11 @@
 package manager;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.context.FacesContextFactory;
 
+import utils.SessionUtils;
 import bean.Flight;
 import bean.Plane;
 import dao.FlightDao;
@@ -61,9 +59,15 @@ public class ManagerFlight {
 	/**
 	 * Display the details of a flight
 	 */
-	public void get(Flight f){
-		System.out.println("Test ");
-		System.out.println(f.toString());
+	public String get(Flight f){
+		SessionUtils.getSession().setAttribute("flight", f);
+		
+		
+		
+		inputIdAvion = f.getPlane().getId();
+		inputDescription = f.getDescription();
+		
+		return "addFlight";
 	}
 	
 	/**
