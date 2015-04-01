@@ -7,32 +7,41 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
->
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<ui:define name="title">
-			<title>Liste des vols</title>
+		<title>Liste des vols</title>
 	</ui:define>
 
 	<ui:define name="body">
-	
+
 		<h:panelGroup layout="block" styleClass="container">
 			<h3>Liste des hotels</h3>
-			
-			<h:dataTable value="#{managerHotel.hotels}" var="o" styleClass="bordered">
-			
+
+			<h:dataTable value="#{managerHotel.hotels}" var="o"
+				styleClass="bordered">
+
 				<h:column>
 					<f:facet name="ID"></f:facet>
 					#{o.id}
 				</h:column>
-			
+
 				<h:column>
 					<f:facet name="Nom"></f:facet>
 					#{o.name}
 				</h:column>
-			
+
+				<h:column>
+					<f:facet name="Action"></f:facet>
+					<h:commandButton value="Détails" action="#{managerFlight.get(o)}"
+						styleClass="waves-effect waves-light btn"></h:commandButton>
+					<h:commandButton value="Supprimer"
+						action="#{managerFlight.delete(o)}"
+						styleClass="waves-effect waves-light btn"></h:commandButton>
+				</h:column>
+
 			</h:dataTable>
-				
+
 			<h:link value="Ajouter un hotel" outcome="addHotel" />
 		</h:panelGroup>
 

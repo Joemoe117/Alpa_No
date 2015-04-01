@@ -37,8 +37,11 @@
 					</h:inputTextarea>
 					<h:message for="flightDesc" style="color:red" />
 					<!-- Bouton submit -->
-					<h:commandButton value="Créer le vol"
-						action="#{managerFlight.createFlight}" />
+					<h:commandButton 
+						value="Enregistrer"
+						action="#{managerFlight.createFlight}" 
+						styleClass="waves-effect waves-light btn"
+					/>
 				</h:panelGrid>
 			</h:form>
 

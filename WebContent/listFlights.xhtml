@@ -42,13 +42,10 @@
 						<f:facet name="Actions"></f:facet>
 						<h:commandButton value="Détails" action="#{managerFlight.get(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
 						<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
-					</h:column>
-				
+					</h:column>				
 				</h:dataTable>
+				<h:commandButton value="Créer un vol" action="#{managerFlight.create}" styleClass="waves-effect waves-light btn"></h:commandButton>
 			</h:form>
-			
-			<h:link value="Ajouter un vol" outcome="addFlight" />
-
 		</h:panelGroup>
 	</ui:define>
 

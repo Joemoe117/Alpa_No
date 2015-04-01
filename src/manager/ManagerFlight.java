@@ -57,15 +57,24 @@ public class ManagerFlight {
 	}
 	
 	/**
+	 * Return an empty form to create a flight
+	 * @return
+	 */
+	public String create(){
+		
+		inputDescription = "";
+		inputIdAvion = -1;
+		
+		return "addFlight";
+	}
+	
+	/**
 	 * Display the details of a flight
 	 */
 	public String get(Flight f){
-		SessionUtils.getSession().setAttribute("flight", f);
-		
-		
-		
-		inputIdAvion = f.getPlane().getId();
+
 		inputDescription = f.getDescription();
+		inputIdAvion = f.getPlane().getId();
 		
 		return "addFlight";
 	}
