@@ -15,23 +15,26 @@
 	</ui:define>
 
 	<ui:define name="body">
-		<h1>Liste des hotels</h1>
-		
-		<h:dataTable value="#{managerHotel.hotels}" var="o" styleClass="table">
-		
-			<h:column>
-				<f:facet name="ID"></f:facet>
-				#{o.id}
-			</h:column>
-		
-			<h:column>
-				<f:facet name="Nom"></f:facet>
-				#{o.name}
-			</h:column>
-		
-		</h:dataTable>
+	
+		<h:panelGroup layout="block" styleClass="container">
+			<h3>Liste des hotels</h3>
 			
-		<h:link value="Ajouter un hotel" outcome="addHotel" />
+			<h:dataTable value="#{managerHotel.hotels}" var="o" styleClass="bordered">
+			
+				<h:column>
+					<f:facet name="ID"></f:facet>
+					#{o.id}
+				</h:column>
+			
+				<h:column>
+					<f:facet name="Nom"></f:facet>
+					#{o.name}
+				</h:column>
+			
+			</h:dataTable>
+				
+			<h:link value="Ajouter un hotel" outcome="addHotel" />
+		</h:panelGroup>
 
 	</ui:define>
 

@@ -9,6 +9,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
+	
+	
+	
 
 	<ui:define name="title">
 			<title>Ajouter un hotel</title>
@@ -16,21 +19,27 @@
 
 	<ui:define name="body">
 	
-		<h1>Ajouter un hotel</h1>
-		
-		<h:form>
-		    <h:panelGrid>
-		        <h:outputLabel value="Nom de l'hotel :"/>
-		        <h:inputText id="hotelName" value="#{manager.inputHotelName}" required="true">
-		        	<f:validateLength minimum="4" maximum="100" />
-		        </h:inputText>
-		        <h:message for="hotelName" style="color:red" />
-		        <h:commandButton value="Créer" action="#{manager.createHotel}"/>
-		    </h:panelGrid>
-		</h:form>
+		<h:panelGroup layout="block" styleClass="container">
+	
+	
+			<h3>Ajouter un hotel</h3>
 			
+			<h:form>
+			    <h:panelGrid>
+			        <h:outputLabel value="Nom de l'hotel :"/>
+			        <h:inputText id="hotelName" value="#{manager.inputHotelName}" required="true">
+			        	<f:validateLength minimum="4" maximum="100" />
+			        </h:inputText>
+			        <h:message for="hotelName" style="color:red" />
+			        <h:commandButton value="Créer" action="#{manager.createHotel}" styleClass="waves-effect waves-light btn right"/>
+			    </h:panelGrid>
+			</h:form>
+				
+		
+		</h:panelGroup>
 
 	</ui:define>
+	
 
 </ui:composition>
 

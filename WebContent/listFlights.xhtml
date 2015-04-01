@@ -16,37 +16,40 @@
 
 	<ui:define name="body">
 	
-		<h1>Liste des vols</h1>
-		
-		<h:form>
-			<h:dataTable value="#{managerFlight.flights}" var="o" styleClass="table">
+		<h:panelGroup layout="block" styleClass="container">
+	
+			<h2>Liste des vols</h2>
 			
-				<h:column>
-					<f:facet name="ID"></f:facet>
-					#{o.id}
-				</h:column>
-			
-				<h:column>
-					<f:facet name="Avion"></f:facet>
-					#{o.plane.name}
-				</h:column>
+			<h:form>
+				<h:dataTable value="#{managerFlight.flights}" var="o" class="bordered">
 				
-				<h:column>
-					<f:facet name="Description"></f:facet>
-					#{o.description}
-				</h:column>
+					<h:column>
+						<f:facet name="ID"></f:facet>
+						#{o.id}
+					</h:column>
 				
-				<h:column>
-					<f:facet name="Actions"></f:facet>
-					<h:commandButton value="Détails" action="#{managerFlight.get(o)}"></h:commandButton>
-					<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}"></h:commandButton>
-				</h:column>
+					<h:column>
+						<f:facet name="Avion"></f:facet>
+						#{o.plane.name}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="Description"></f:facet>
+						#{o.description}
+					</h:column>
+					
+					<h:column>
+						<f:facet name="Actions"></f:facet>
+						<h:commandButton value="Détails" action="#{managerFlight.get(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
+						<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
+					</h:column>
+				
+				</h:dataTable>
+			</h:form>
 			
-			</h:dataTable>
-		</h:form>
-		
-		<h:link value="Ajouter un vol" outcome="addFlight" />
+			<h:link value="Ajouter un vol" outcome="addFlight" />
 
+		</h:panelGroup>
 	</ui:define>
 
 </ui:composition>
