@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -63,5 +64,25 @@ public class PanelDao {
 		}
 		em.persist(panel);
 		em.getTransaction().commit();
+	}
+
+	/**
+	 * Search all panels available for the given period
+	 * @param dateBegin
+	 * 		begin of the period
+	 * @param dateEnd
+	 * 		end of the period
+	 */
+	public static List<Panel> searchForPeriod(Date dateBegin, Date dateEnd) {
+		// TODO Auto-generated method stub
+		EntityManager em = GenericDao.getEntityManager();
+		
+		Query query = em.createQuery("from Panel as p where p.dateBegin > :begin and p.dateEnd <= :end");
+		query.setParameter("begin", dateBegin);
+		query.setParameter("end", dateEnd);
+		
+		List<Panel> panels = query.getResultList();
+		
+		return panels;
 	}
 }
