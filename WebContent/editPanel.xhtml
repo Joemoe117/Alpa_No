@@ -16,7 +16,9 @@
 	<ui:define name="body">
 
 		<h:panelGroup layout="block" styleClass="container">
-			<h1>Hotel</h1>
+			<h4>
+				Gestion du vol #{managerPanel.currentFlight.plane.name} n°#{managerPanel.currentFlight.id} 
+			</h4>
 
 			<h:form>
 				<h:panelGrid>
@@ -39,7 +41,7 @@
 					</h:inputText>
 
 					<!-- Bouton submit -->
-					<h:commandButton value="Enregistrer" action="#{managerPanel.save}" />
+					<h:commandButton value="Enregistrer" action="#{managerPanel.save()}" />
 
 
 				</h:panelGrid>

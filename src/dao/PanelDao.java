@@ -23,7 +23,7 @@ public class PanelDao {
 		Query query = em.createQuery("from Panel as pa where pa.flight = :flight");
 		query.setParameter("flight", flight);
 		
-		if (query.getResultList() != null) {
+		if (query.getResultList() != null && !query.getResultList().isEmpty()) {
 			return (Panel) query.getResultList().get(0);
 		} else {
 			return null;

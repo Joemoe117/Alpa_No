@@ -11,38 +11,24 @@
 	<script type="text/javascript" src="assets/js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.datetimepicker.js"></script>
 	<script type="text/javascript" src="assets/js/src/datetimepicker.js"></script>
-	<script type="text/javascript" src="assets/js/materialize.min.js"></script>
-	<link type='text/css' href='assets/css/jquery.datetimepicker.css' rel='stylesheet' />
+	<link type='text/css' href='assets/css/jquery.datetimepicker.css'
+		rel='stylesheet' />
 	<link type='text/css' href='assets/css/menu.css' rel='stylesheet' />
 	<link type='text/css' href='assets/css/widgets.css' rel='stylesheet' />
-	<link type='text/css' href='assets/css/materialize.min.css' rel='stylesheet' />
-	<div id="header">
-		<img src="assets/images/alpano.png" alt="" />
+	<link type='text/css' href='assets/css/materialize.min.css'
+		rel='stylesheet' />
+	<nav>
+	<h:form>
+	<div class="nav-wrapper">
+		<a href="listflight.xhtml" style="z-index:5000" class="brand-logo"><img src="assets/images/alpano.png"
+			alt="" width="25%" /></a>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><h:commandLink value="Vols" action="listFlights" /></li>
+			<li><h:commandLink value="Hotels" action="listHotels" /></li>
+			<li><h:commandLink value="Vols" action="simulation" /></li>
+		</ul>
 	</div>
-	<h:form id="form_menu">
-		<div id="menus">
-			<div id="main-menu">
-				<ul>
-					<li class=" first"><h:commandLink value="Vols"
-							action="listFlights" /><span class="spacer"></span>
-						<ul>
-							<li class="first"><h:commandLink value="Ajouter un vol"
-									action="addFlight" /></li>
-							<li class="first"><h:commandLink value="Liste des vols"
-									action="listFlights" /></li>
-						</ul></li>
-					<li class=" first"><h:commandLink value="Hôtels"
-							action="listHotels" /><span class="spacer"></span>
-						<ul>
-							<li class="first"><h:commandLink value="Ajouter un hôtel"
-									action="addHotel" /></li>
-							<li class="first"><h:commandLink value="Liste des hôtels"
-									action="listHotels" /></li>
-						</ul></li>
-					<li class=" first"><h:commandLink value="Simulation"
-							action="simulation" /><span class="spacer"></span></li>
-				</ul>
-			</div>
-		</div>
 	</h:form>
+	</nav>
+
 </ui:composition>
