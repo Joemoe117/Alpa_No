@@ -40,8 +40,9 @@
 					
 					<h:column>
 						<f:facet name="Actions"></f:facet>
-						<h:commandButton value="Détails" action="#{managerFlight.get(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
+						<h:commandButton value="Modifier" action="#{managerFlight.get(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
 						<h:commandButton value="Supprimer" action="#{managerFlight.delete(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
+						<h:commandButton value="Panneau" action="#{managerPanel.edit(o)}" styleClass="waves-effect waves-light btn"></h:commandButton>
 					</h:column>				
 				</h:dataTable>
 				<h:commandButton value="Créer un vol" action="#{managerFlight.create}" styleClass="waves-effect waves-light btn"></h:commandButton>

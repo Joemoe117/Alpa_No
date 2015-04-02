@@ -8,47 +8,46 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-	
+
 	<ui:define name="title">
 		<title>Gestion du panneau du vol ???</title>
 	</ui:define>
 
 	<ui:define name="body">
 
-		<h1>Hotel</h1>
+		<h:panelGroup layout="block" styleClass="container">
+			<h1>Hotel</h1>
 
-		<h:form>
-			<h:panelGrid>
-				<!-- Choix des Hotels -->
-				<h:outputLabel value="Hôtels :" />
-				<h:selectManyMenu value="#{managerPanel.inputHotels}" styleClass="browser-default">
-					<f:selectItems
-						value="#{managerPanel.hotels}" 
-						var="h"
-						itemLabel="#{h.name}" 
-						itemValue="#{h.id}" 
-					/>
-				</h:selectManyMenu>
-				
-				<h:outputLabel value="Date de début :" />
-				<h:inputText id="checkInDate" value="#{managerPanel.beginDate}">  
-					<f:convertDateTime pattern="yyyy-MM-dd"/>  
-				</h:inputText>
+			<h:form>
+				<h:panelGrid>
+					<!-- Choix des Hotels -->
+					<h:outputLabel value="Hôtels :" />
+					<h:selectManyMenu value="#{managerPanel.inputHotels}"
+						styleClass="browser-default">
+						<f:selectItems value="#{managerPanel.hotels}" var="h"
+							itemLabel="#{h.name}" itemValue="#{h.id}" />
+					</h:selectManyMenu>
 
-				<h:outputLabel value="Date de fin :" />
-				<h:inputText id="checkOutDate" value="#{managerPanel.endDate}">  
-					<f:convertDateTime pattern="yyyy-MM-dd"/>  
-				</h:inputText>
-				
-				<!-- Bouton submit -->
-				<h:commandButton value="Enregistrer" action="#{managerPanel.save}" />
-			
-			
-			</h:panelGrid>
-		</h:form>
+					<h:outputLabel value="Date de début :" />
+					<h:inputText id="checkInDate" value="#{managerPanel.beginDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
 
-		<h:link value="Revenir à la liste des vols" outcome="listFlights" />
+					<h:outputLabel value="Date de fin :" />
+					<h:inputText id="checkOutDate" value="#{managerPanel.endDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
 
+					<!-- Bouton submit -->
+					<h:commandButton value="Enregistrer" action="#{managerPanel.save}" />
+
+
+				</h:panelGrid>
+			</h:form>
+
+			<h:link value="Revenir à la liste des vols" outcome="listFlights" />
+
+		</h:panelGroup>
 	</ui:define>
 
 </ui:composition>

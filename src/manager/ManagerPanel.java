@@ -1,13 +1,17 @@
 package manager;
 
+import java.lang.reflect.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.http.HttpSession;
 
+import bean.Flight;
 import bean.Hotel;
+import bean.LinkPanelHotel;
+import bean.Panel;
 import dao.HotelDao;
 import dao.PanelDao;
 
@@ -28,12 +32,17 @@ public class ManagerPanel {
 	/**
 	 * input begin date
 	 */
-	public Date beginDate;
+	public String beginDate;
 	
 	/**
 	 * input end date
 	 */
-	public Date endDate;
+	public String endDate;
+	
+	/**
+	 * Flight associated to this panel
+	 */
+	public Flight currentFlight;
 	
 	/**
 	 * Default constructor
@@ -71,25 +80,79 @@ public class ManagerPanel {
 			isOk &= PanelDao.hotelWithIdExist(hotelId);
 		}
 		
+		// TODO Julien
+		// recupere les dates qui sont en format string
+		// les transformer en objet date
+		
 		if (isOk){
 			
 		}
 	}
 
-	public Date getBeginDate() {
+	/**
+	 * Update an existing panel
+	 * @param flight
+	 * 		the flight linked to this panel
+	 * @return
+	 * 		form to update the panel
+	 */
+	public String edit(Flight flight){
+		currentFlight = flight;
+		Panel p = checkExistingPanel();
+		
+		return "editPanel";
+	}
+	
+	/**
+	 * Check if the actual flight already has a panel
+	 * @return
+	 */
+	private Panel checkExistingPanel(){
+		Panel panel = PanelDao.getPanelByFlight(currentFlight);
+	
+		// update existing panel
+		if (panel != null){
+			beginDate = panel.getDateBegin().toString();
+			endDate = panel.getDateEnd().toString();
+			
+			List<LinkPanelHotel> panels = (List<LinkPanelHotel>) panel.getPanels();
+			List<Integer> selectedHotels = new ArrayList<Integer>();
+			for (LinkPanelHotel linkPanelHotel : panels) {
+				selectedHotels.add(linkPanelHotel.getHotel().getId());	
+			}
+			inputHotels = ( selectedHotels.toArray(new Integer[selectedHotels.size()]));
+		
+		// it is a new panel
+		} else {
+			panel = new Panel();
+		}
+		
+		return panel;
+	}
+
+	public String getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Date beginDate) {
+	public void setBeginDate(String beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+
+	public Flight getCurrentFlight() {
+		return currentFlight;
+	}
+
+	public void setCurrentFlight(Flight currentFlight) {
+		this.currentFlight = currentFlight;
+	}
+	
 	
 }
