@@ -111,7 +111,6 @@ public class ManagerPanel {
 	public String edit(Flight flight){
 		currentFlight = flight;
 		Panel p = checkExistingPanel();
-		
 		return "editPanel";
 	}
 	
@@ -137,6 +136,9 @@ public class ManagerPanel {
 		// it is a new panel
 		} else {
 			panel = new Panel();
+			inputHotels = new Integer[hotels.size()];
+			beginDate = "";
+			endDate = "";
 		}
 		
 		return panel;
