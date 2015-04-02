@@ -1,7 +1,9 @@
 package manager;
 
 import java.lang.reflect.Array;
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +71,7 @@ public class ManagerPanel {
 	
 	/**
 	 * Save the current panel
+	 * @throws ParseException 
 	 */
 	public void save(){
 		
@@ -80,9 +83,19 @@ public class ManagerPanel {
 			isOk &= PanelDao.hotelWithIdExist(hotelId);
 		}
 		
-		// TODO Julien
-		// recupere les dates qui sont en format string
-		// les transformer en objet date
+		String pattern = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		Date checkInDate = null;
+		Date checkOutDate = null;
+		
+		try {
+			checkInDate = sdf.parse(beginDate);
+			checkOutDate = sdf.parse(endDate);
+		} catch (ParseException e) {
+			isOk = false;
+		}
+		
+		if(checkOutDate.before(checkInDate)) isOk = false;
 		
 		if (isOk){
 			
