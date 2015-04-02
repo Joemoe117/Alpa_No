@@ -1,14 +1,19 @@
 package manager;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import utils.HttpUtils;
 import bean.Flight;
 import bean.Hotel;
 import bean.LinkPanelHotel;
@@ -46,6 +51,11 @@ public class ManagerPanel {
 	public Flight currentFlight;
 	
 	/**
+	 * Current modified panel
+	 */
+	public Panel currentPanel;
+	
+	/**
 	 * Default constructor
 	 */
 	public ManagerPanel(){
@@ -77,13 +87,14 @@ public class ManagerPanel {
 		// check if all selected hotels exist in database
 		// ie, user does not modify manually the html
 		boolean isOk = true;
+		Set<Hotel> hotels = new HashSet<Hotel>();
 		for (int i = 0; i < inputHotels.length; i++) {
 			Integer hotelId = inputHotels[i];
-			isOk &= PanelDao.hotelWithIdExist(hotelId);
+			hotels.add(PanelDao.hotelWithIdExist(hotelId));
 		}
 		
 		String pattern = "yyyy-MM-dd HH:mm:ss";
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.FRANCE);
 		Date checkInDate = null;
 		Date checkOutDate = null;
 		
@@ -95,9 +106,19 @@ public class ManagerPanel {
 		}
 		
 		if(checkOutDate.before(checkInDate)) isOk = false;
-		
+
 		if (isOk){
+			Panel panel = new Panel();
 			
+			if (currentPanel != null) {
+				panel = currentPanel;
+			}
+			
+			panel.setDateBegin(new Timestamp(checkInDate.getTime()));
+			panel.setDateEnd(new Timestamp(checkOutDate.getTime()));
+			panel.setHotels(hotels);
+			
+			PanelDao.save(panel);
 		}
 	}
 
@@ -108,10 +129,10 @@ public class ManagerPanel {
 	 * @return
 	 * 		form to update the panel
 	 */
-	public String edit(Flight flight){
+	public void edit(Flight flight){
 		currentFlight = flight;
-		Panel p = checkExistingPanel();
-		return "editPanel";
+		currentPanel = checkExistingPanel();
+		HttpUtils.redirect("editPanel");
 	}
 	
 	/**
@@ -119,6 +140,11 @@ public class ManagerPanel {
 	 * @return
 	 */
 	private Panel checkExistingPanel(){
+		
+		if (currentFlight == null){
+			HttpUtils.redirect("listFlights");
+		}
+		
 		Panel panel = PanelDao.getPanelByFlight(currentFlight);
 	
 		// update existing panel
@@ -126,10 +152,9 @@ public class ManagerPanel {
 			beginDate = panel.getDateBegin().toString();
 			endDate = panel.getDateEnd().toString();
 			
-			List<LinkPanelHotel> panels = (List<LinkPanelHotel>) panel.getPanels();
 			List<Integer> selectedHotels = new ArrayList<Integer>();
-			for (LinkPanelHotel linkPanelHotel : panels) {
-				selectedHotels.add(linkPanelHotel.getHotel().getId());	
+			for (Hotel hotel : panel.getHotels()) {
+				selectedHotels.add(hotel.getId());	
 			}
 			inputHotels = ( selectedHotels.toArray(new Integer[selectedHotels.size()]));
 		
@@ -166,6 +191,14 @@ public class ManagerPanel {
 
 	public void setCurrentFlight(Flight currentFlight) {
 		this.currentFlight = currentFlight;
+	}
+
+	public Panel getCurrentPanel() {
+		return currentPanel;
+	}
+
+	public void setCurrentPanel(Panel currentPanel) {
+		this.currentPanel = currentPanel;
 	}
 	
 	

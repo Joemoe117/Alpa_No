@@ -24,7 +24,7 @@ public class Flight {
     @JoinColumn(name = "id_plane", referencedColumnName = "id", nullable = false)
     private Plane plane;
     
-    @OneToMany(mappedBy = "panels")
+    @OneToMany(mappedBy = "flight")
     private Collection<Panel> panels;
 
 

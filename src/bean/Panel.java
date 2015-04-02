@@ -23,13 +23,17 @@ public class Panel {
     @Column(name = "date_end")
     private Timestamp dateEnd;
     
-    @OneToMany()
-    @JoinColumn(name = "id_panel")
-    private Collection<LinkPanelHotel> panels;
-    
     @ManyToOne
     @JoinColumn(name = "id_flight", referencedColumnName = "id", nullable = false)
     private Flight flight;
+    
+    @OneToMany
+    @JoinTable(
+    	name = "link_panel_hotel",
+    	joinColumns= @JoinColumn(name="id_panel"), 
+    	inverseJoinColumns = @JoinColumn(name="id_hotel")
+    )
+    private Collection<Hotel> hotels;
 
 
     public int getId() {
@@ -57,14 +61,6 @@ public class Panel {
         this.dateEnd = dateEnd;
     }
 
-    public Collection<LinkPanelHotel> getPanels() {
-        return panels;
-    }
-
-    public void setPanels(Collection<LinkPanelHotel> panels) {
-        this.panels = panels;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_flight", referencedColumnName = "id", nullable = false)
     public Flight getFlight() {
@@ -74,4 +70,14 @@ public class Panel {
     public void setFlight(Flight flight) {
         this.flight = flight;
     }
+
+	public Collection<Hotel> getHotels() {
+		return hotels;
+	}
+
+	public void setHotels(Collection<Hotel> hotels) {
+		this.hotels = hotels;
+	}
+    
+    
 }

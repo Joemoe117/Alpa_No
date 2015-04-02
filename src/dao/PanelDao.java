@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import bean.Flight;
+import bean.Hotel;
 import bean.Panel;
 
 public class PanelDao {
@@ -35,16 +36,32 @@ public class PanelDao {
 	 * @param id
 	 * 		id of the hotel to check
 	 * @return
-	 * 		true if this hotel exists
-	 * 		false otherwise
+	 * 		the hotel if this hotel exists
+	 * 		null otherwise
 	 */
-	public static boolean hotelWithIdExist(Integer id){
+	public static Hotel hotelWithIdExist(Integer id){
 		
 		EntityManager em = GenericDao.getEntityManager();
 		
 		Query query = em.createQuery("from Hotel as h where h.id = :id");
 		query.setParameter("id", id);
 		
-		return query.getResultList() != null;
+		return (Hotel) query.getResultList().get(0);
+	}
+	
+	/**
+	 * Save the given panel
+	 * @param panel
+	 * 		panel to save
+	 */
+	public static void save(Panel panel){
+		EntityManager em = GenericDao.getEntityManager();
+		em.getTransaction().begin();
+		
+		if (panel.getId() != 0){
+			panel = em.merge(panel);
+		}
+		em.persist(panel);
+		em.getTransaction().commit();
 	}
 }
