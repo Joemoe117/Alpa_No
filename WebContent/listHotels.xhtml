@@ -17,32 +17,42 @@
 
 		<h:panelGroup layout="block" styleClass="container">
 			<h3>Liste des hotels</h3>
+			<h:form>
 
-			<h:dataTable value="#{managerHotel.hotels}" var="o"
-				styleClass="bordered">
+				<h:dataTable value="#{managerHotel.hotels}" var="o"
+					styleClass="bordered">
 
-				<h:column>
-					<f:facet name="ID"></f:facet>
+					<h:column>
+						<f:facet name="ID"></f:facet>
 					#{o.id}
 				</h:column>
 
-				<h:column>
-					<f:facet name="Nom"></f:facet>
+					<h:column>
+						<f:facet name="Nom"></f:facet>
 					#{o.name}
 				</h:column>
 
-				<h:column>
-					<f:facet name="Action"></f:facet>
-					<h:commandButton value="Détails" action="#{managerFlight.get(o)}"
-						styleClass="waves-effect waves-light btn"></h:commandButton>
-					<h:commandButton value="Supprimer"
-						action="#{managerFlight.delete(o)}"
-						styleClass="waves-effect waves-light btn"></h:commandButton>
-				</h:column>
+					<h:column>
+						<f:facet name="Action"></f:facet>
+						<h:commandButton value="Modifier" action="#{managerHotel.edit(o)}"
+							styleClass="waves-effect waves-light btn"></h:commandButton>
+					</h:column>
 
-			</h:dataTable>
+					<h:column>
+						<f:facet name="Action"></f:facet>
+						<h:commandButton value="Supprimer"
+							action="#{managerHotel.delete(o)}"
+							styleClass="waves-effect waves-light btn"></h:commandButton>
+					</h:column>
 
-			<h:link value="Ajouter un hotel" outcome="addHotel" />
+				</h:dataTable>
+
+				<br />
+				<h:commandLink action="#{managerHotel.add}"
+					styleClass="waves-effect waves-light btn right">
+					<i class="mdi-content-add"></i>
+				</h:commandLink>
+			</h:form>
 		</h:panelGroup>
 
 	</ui:define>

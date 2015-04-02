@@ -83,7 +83,6 @@ public class ManagerFlight {
 	 * Delete a flight
 	 */
 	public void delete(Flight f){
-		System.out.println("delete a flight");
 		FlightDao.delete(f);
 		
 		loadFlights();

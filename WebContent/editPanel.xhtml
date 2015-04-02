@@ -23,7 +23,7 @@
 					<!-- Choix des Hotels -->
 					<h:outputLabel value="Hôtels :" />
 					<h:selectManyMenu value="#{managerPanel.inputHotels}"
-						styleClass="browser-default">
+						styleClass="browser-default" style="height:100px">
 						<f:selectItems value="#{managerPanel.hotels}" var="h"
 							itemLabel="#{h.name}" itemValue="#{h.id}" />
 					</h:selectManyMenu>

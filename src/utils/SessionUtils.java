@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
  */
 public class SessionUtils {
 
+	public static final String CONNECTED = "connected";
+	
 	/**
 	 * Return the current session
 	 * @return
