@@ -3,11 +3,14 @@ package manager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import utils.HttpUtils;
+import bean.Panel;
 import dao.PanelDao;
 
 /**
@@ -29,6 +32,11 @@ public class ManagerSimulation {
 	 * input for end date
 	 */
 	private String inputDateEnd;
+	
+	/**
+	 * List of panels corresponding to the search
+	 */
+	private Panel searchedPanel;
 
 	/**
 	 * Default constructor
@@ -48,10 +56,19 @@ public class ManagerSimulation {
 			Date dateBegin = sdf.parse("2010-02-23 16:00:00");
 			Date dateEnd = sdf.parse("2020-02-23 18:00:00");
 			
+			inputDateBegin = "2010-02-23 16:00:00";
+			inputDateEnd = "2010-02-23 18:00:00";
+			
 			boolean isOk = checkDates(dateBegin, dateEnd);
 			
 			if (isOk) {
-				PanelDao.searchForPeriod(dateBegin, dateEnd);
+				List<Panel> panels = PanelDao.searchForPeriod(dateBegin, dateEnd);
+				
+				// if there is at least one result
+				if ( panels != null && !panels.isEmpty()){
+					searchedPanel = panels.get(0);
+					HttpUtils.redirect("simulateResults");
+				}
 			}
 			
 		} catch (ParseException e) {
@@ -101,6 +118,14 @@ public class ManagerSimulation {
 
 	public void setInputDateEnd(String inputDateEnd) {
 		this.inputDateEnd = inputDateEnd;
+	}
+
+	public Panel getSearchedPanel() {
+		return searchedPanel;
+	}
+
+	public void setSearchedPanel(Panel searchedPanel) {
+		this.searchedPanel = searchedPanel;
 	}
 	
 	

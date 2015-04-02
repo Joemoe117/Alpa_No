@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition template="/commun_modele/modele.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="title">
+		<title>Liste des vols</title>
+	</ui:define>
+
+	<ui:define name="body">
+
+		<h:panelGroup layout="block" styleClass="container">
+
+			<h2>Résultat de la recherche</h2>
+			<div class="row">
+				<div class="col s6">
+					<p>
+						<b>Date de début : </b>#{managerSimulation.inputDateBegin}
+					</p>
+				</div>
+				<div class="col s6">
+					<p><b>Date de fin : </b>#{managerSimulation.inputDateEnd}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m7">
+					<div class="card">
+						<div class="card-image">
+							<img src="assets/images/plane.jpeg" /> <span class="card-title">
+								#{managerSimulation.searchedPanel.flight.plane.name} </span>
+						</div>
+						<div class="card-content">
+							<p>#{managerSimulation.searchedPanel.flight.description}</p>
+							<h6>Horaires</h6>
+							<p>Départ : #{managerSimulation.searchedPanel.dateBegin}</p>
+							<p>Arrivé : #{managerSimulation.searchedPanel.dateEnd}</p>
+						</div>
+						<div class="card-action">
+							<a href="#">Modifier</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+
+		<i class="mdi-action-3d-rotation"></i>
+	</ui:define>
+
+</ui:composition>
+
