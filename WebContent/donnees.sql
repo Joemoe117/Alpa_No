@@ -12,7 +12,7 @@ INSERT INTO hotel (name) VALUES ('Atlantis Paradise Island - Paradise Island - B
 INSERT INTO hotel (name) VALUES ('Hôtel Palms - Las Vegas - États Unis');
 INSERT INTO hotel (name) VALUES ('Hôtel The Boulders - Arizona - États Unis');
 INSERT INTO hotel (name) VALUES ('Hôtel CuisinArt Golf Resort & Spa - Anguilla - Royaume Uni');
-INSERT INTO hotel (name) VALUES ('hôtel Secrets Marquis - Los Cabos - Mexique');
+INSERT INTO hotel (name) VALUES ('Hôtel Secrets Marquis - Los Cabos - Mexique');
 
 INSERT INTO plane (name) VALUES ('Airbus A318-111-F-GUGA ');
 INSERT INTO plane (name) VALUES ('Airbus A330-203-F-GZCB ');
@@ -44,6 +44,16 @@ INSERT INTO panel (id_flight, date_begin, date_end) VALUES (6, '2015-04-03 15:30
 INSERT INTO panel (id_flight, date_begin, date_end) VALUES (7, '2015-04-03 20:05:00', '2015-04-03 23:35:00');
 INSERT INTO panel (id_flight, date_begin, date_end) VALUES (8, '2015-04-03 10:30:00', '2015-04-03 12:30:00');
 INSERT INTO panel (id_flight, date_begin, date_end) VALUES (9, '2015-04-03 08:15:00', '2015-04-03 12:15:00');
+
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (1, 8);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (2, 9);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (3, 4);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (4, 3);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (5, 5);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (6, 10);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (7, 3);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (8, 6);
+INSERT INTO link_panel_hotel (id_panel, id_hotel) VALUES (9, 5);
 
 
 
