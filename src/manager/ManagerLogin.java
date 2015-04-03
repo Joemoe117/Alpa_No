@@ -50,7 +50,7 @@ public class ManagerLogin {
 			HttpUtils.redirect("listFlights");
 		}
 		else {
-			resultString = "Incorrect login or password";
+			resultString = "Identifiant ou mot de passe incorrect";
 		}
 	}
 

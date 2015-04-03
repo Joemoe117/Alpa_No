@@ -37,7 +37,7 @@
 					<h:outputLabel value="Date de fin :" />
 					<h:inputText class="checkOutDate" value="#{managerPanel.endDate}">
 					</h:inputText>
-
+					<h:outputLabel value="#{managerPanel.resultString}" style="color:red" />
 					<!-- Bouton submit -->
 					<h:commandButton value="Enregistrer" action="#{managerPanel.save}" />
 

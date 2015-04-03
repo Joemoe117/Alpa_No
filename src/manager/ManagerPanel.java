@@ -56,10 +56,16 @@ public class ManagerPanel {
 	public Panel currentPanel;
 	
 	/**
+	 * Current modified panel
+	 */
+	public String resultString;
+	
+	/**
 	 * Default constructor
 	 */
 	public ManagerPanel(){
 		hotels = HotelDao.getAllHotels();
+		resultString="";
 	}
 
 	public List<Hotel> getHotels() {
@@ -76,6 +82,14 @@ public class ManagerPanel {
 
 	public void setInputHotels(Integer[] inputHotels) {
 		this.inputHotels = inputHotels;
+	}
+	
+	public String getResultString(){
+		return resultString;
+	}
+	
+	public void setResultString(String resultString){
+		this.resultString = resultString;
 	}
 	
 	/**
@@ -103,9 +117,13 @@ public class ManagerPanel {
 			checkOutDate = sdf.parse(endDate);
 		} catch (ParseException e) {
 			isOk = false;
+			resultString = "Problème avec le format de date";
 		}
 		
-		if(checkOutDate.before(checkInDate)) isOk = false;
+		if(checkOutDate.before(checkInDate)){
+			isOk = false;
+			resultString = "La date de début doit être antérieur à la date de fin.";
+		}
 
 		if (isOk){
 			Panel panel = new Panel();
@@ -119,7 +137,7 @@ public class ManagerPanel {
 			panel.setHotels(hotels);
 			
 			PanelDao.save(panel);
-			
+			resultString="";
 			HttpUtils.redirect("listFlights");
 		}
 	}
@@ -134,6 +152,7 @@ public class ManagerPanel {
 	public void edit(Flight flight){
 		currentFlight = flight;
 		currentPanel = checkExistingPanel();
+		resultString="";
 		HttpUtils.redirect("editPanel");
 	}
 	
