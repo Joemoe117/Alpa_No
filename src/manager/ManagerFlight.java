@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import utils.HttpUtils;
 import utils.SessionUtils;
 import bean.Flight;
 import bean.Plane;
@@ -29,6 +30,8 @@ public class ManagerFlight {
 	
 	public String inputDescription;
 	
+	public Flight currentFlight;
+	
 	/**
 	 * Default constructor
 	 */
@@ -44,6 +47,10 @@ public class ManagerFlight {
 		Flight flight = new Flight();
 		// TODO check form input
 		
+		if (currentFlight != null) {
+			flight = currentFlight;
+		}
+		
 		// get plane by ID
 		flight.setPlane(PlaneDao.getById(inputIdAvion));
 		
@@ -54,6 +61,7 @@ public class ManagerFlight {
 		
 		// need to reload flights
 		loadFlights();
+		HttpUtils.redirect("listFlights");
 	}
 	
 	/**
@@ -75,6 +83,8 @@ public class ManagerFlight {
 
 		inputDescription = f.getDescription();
 		inputIdAvion = f.getPlane().getId();
+		
+		currentFlight = f;
 		
 		return "addFlight";
 	}

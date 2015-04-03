@@ -38,6 +38,10 @@ public class PlaneDao {
 	public static void add(Flight flight) {
 		EntityManager em = GenericDao.getEntityManager();
 		em.getTransaction().begin();
+		
+		if (flight.getId() != 0){
+			flight = em.merge(flight);
+		}
 		em.persist(flight);
 		em.getTransaction().commit();
 	}
