@@ -93,7 +93,7 @@ public class ManagerPanel {
 			hotels.add(PanelDao.hotelWithIdExist(hotelId));
 		}
 		
-		String pattern = "yyyy-MM-dd HH:mm:ss";
+		String pattern = "yyyy/MM/dd HH:mm";
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.FRANCE);
 		Date checkInDate = null;
 		Date checkOutDate = null;
@@ -119,6 +119,8 @@ public class ManagerPanel {
 			panel.setHotels(hotels);
 			
 			PanelDao.save(panel);
+			
+			HttpUtils.redirect("listFlights");
 		}
 	}
 
