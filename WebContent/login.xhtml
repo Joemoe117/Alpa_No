@@ -37,7 +37,7 @@
 							<h:inputSecret value="#{managerLogin.inputPassword}" required="true">
 								<f:validateLength minimum="4" maximum="100" />
 							</h:inputSecret>
-
+							<h:outputLabel value="#{managerLogin.resultString}" style="color:red" />
 							<h:commandButton value="Connexion"
 								action="#{managerLogin.login}"
 								styleClass="waves-effect waves-light btn right" />
