@@ -1,13 +1,8 @@
 package manager;
 
 
-import java.io.IOException;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletResponse;
-
 import utils.HttpUtils;
 import utils.SessionUtils;
 import dao.AdministratorDao;
@@ -30,9 +25,14 @@ public class ManagerLogin {
 	 * input for password
 	 */
 	private String inputPassword;
+	
+	/**
+	 * Output result
+	 */
+	public String resultString = "";
 
 	public ManagerLogin(){
-		
+		resultString = "";
 	}
 	
 	/**
@@ -46,7 +46,11 @@ public class ManagerLogin {
 		
 		if ( isConnected ){
 			SessionUtils.getSession().setAttribute(SessionUtils.CONNECTED, true);
+			resultString = "";
 			HttpUtils.redirect("listFlights");
+		}
+		else {
+			resultString = "Incorrect login or password";
 		}
 	}
 
@@ -60,6 +64,14 @@ public class ManagerLogin {
 
 	public String getInputPassword() {
 		return inputPassword;
+	}
+	
+	public String getResultString(){
+		return resultString;
+	}
+	
+	public void setResultString(String resultString){
+		this.resultString = resultString;
 	}
 
 	public void setInputPassword(String inputPassword) {
