@@ -16,7 +16,6 @@ import javax.faces.bean.SessionScoped;
 import utils.HttpUtils;
 import bean.Flight;
 import bean.Hotel;
-import bean.LinkPanelHotel;
 import bean.Panel;
 import dao.HotelDao;
 import dao.PanelDao;
@@ -117,12 +116,12 @@ public class ManagerPanel {
 			checkOutDate = sdf.parse(endDate);
 		} catch (ParseException e) {
 			isOk = false;
-			resultString = "Problème avec le format des dates";
+			resultString = "Problï¿½me avec le format des dates";
 		}
 		
 		if(checkOutDate.before(checkInDate)){
 			isOk = false;
-			resultString = "La date de début doit être antérieure à la date de fin";
+			resultString = "La date de dï¿½but doit ï¿½tre antï¿½rieure ï¿½ la date de fin";
 		}
 
 		if (isOk){
@@ -135,6 +134,7 @@ public class ManagerPanel {
 			panel.setDateBegin(new Timestamp(checkInDate.getTime()));
 			panel.setDateEnd(new Timestamp(checkOutDate.getTime()));
 			panel.setHotels(hotels);
+			panel.setFlight(currentFlight);
 			
 			PanelDao.save(panel);
 			resultString="";
@@ -182,7 +182,6 @@ public class ManagerPanel {
 		
 		// it is a new panel
 		} else {
-			panel = new Panel();
 			inputHotels = new Integer[hotels.size()];
 			beginDate = "";
 			endDate = "";
