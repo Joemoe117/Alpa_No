@@ -45,7 +45,6 @@ public class ManagerFlight {
 	 */
 	public void createFlight(){
 		Flight flight = new Flight();
-		// TODO check form input
 		
 		if (currentFlight != null) {
 			flight = currentFlight;
