@@ -47,7 +47,7 @@ public class ManagerLogin {
 		if ( isConnected ){
 			SessionUtils.getSession().setAttribute(SessionUtils.CONNECTED, true);
 			resultString = "";
-			HttpUtils.redirect("listFlights");
+			HttpUtils.redirect("accueil");
 		}
 		else {
 			resultString = "Identifiant ou mot de passe incorrect";
