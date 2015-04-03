@@ -31,14 +31,11 @@ CREATE TABLE IF NOT EXISTS `administrator` (
   `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `administrator`
 --
-
-INSERT INTO `administrator` (`id`, `name`, `password`) VALUES
-(1, 'admin', 'password');
 
 -- --------------------------------------------------------
 
@@ -52,15 +49,8 @@ CREATE TABLE IF NOT EXISTS `flight` (
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_plane` (`id_plane`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `flight`
---
-
-INSERT INTO `flight` (`id`, `id_plane`, `description`) VALUES
-(1, 1, 'Cet avion sait voler.'),
-(2, 2, 'Cet avion ne vole pas tr?s tr?s bien.');
 
 -- --------------------------------------------------------
 
@@ -72,16 +62,8 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `hotel`
---
-
-INSERT INTO `hotel` (`id`, `name`) VALUES
-(1, 'Hotel Carlton'),
-(2, 'Hotel California'),
-(3, 'Hotel Wonderland');
 
 -- --------------------------------------------------------
 
@@ -94,17 +76,7 @@ CREATE TABLE IF NOT EXISTS `link_panel_hotel` (
   `id_hotel` int(11) NOT NULL,
   `id_panel` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Contenu de la table `link_panel_hotel`
---
-
-INSERT INTO `link_panel_hotel` (`id`, `id_hotel`, `id_panel`) VALUES
-(1, 1, 3),
-(2, 2, 3),
-(3, 3, 4),
-(4, 1, 4);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -119,15 +91,8 @@ CREATE TABLE IF NOT EXISTS `panel` (
   `date_end` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_flight` (`id_flight`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `panel`
---
-
-INSERT INTO `panel` (`id`, `id_flight`, `date_begin`, `date_end`) VALUES
-(3, 1, '2015-02-06 14:00:00', '2015-02-06 15:00:00'),
-(4, 2, '2015-02-06 14:00:00', '2015-02-06 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -139,17 +104,8 @@ CREATE TABLE IF NOT EXISTS `plane` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Contenu de la table `plane`
---
-
-INSERT INTO `plane` (`id`, `name`) VALUES
-(1, 'TransAsia Airways ATR 72-600'),
-(2, 'AirAsia Indonesia Airbus A320-216 '),
-(3, 'Unijet Dassault Falcon 50EX '),
-(4, 'Sepahan Airlines HESA IrAn-140-100 ');
 
 --
 -- Contraintes pour les tables exportées
