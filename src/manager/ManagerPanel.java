@@ -56,7 +56,7 @@ public class ManagerPanel {
 	public Panel currentPanel;
 	
 	/**
-	 * Current modified panel
+	 * result message
 	 */
 	public String resultString;
 	
@@ -117,12 +117,12 @@ public class ManagerPanel {
 			checkOutDate = sdf.parse(endDate);
 		} catch (ParseException e) {
 			isOk = false;
-			resultString = "Problème avec le format de date";
+			resultString = "Problème avec le format des dates";
 		}
 		
 		if(checkOutDate.before(checkInDate)){
 			isOk = false;
-			resultString = "La date de début doit être antérieur à la date de fin.";
+			resultString = "La date de début doit être antérieure à la date de fin";
 		}
 
 		if (isOk){

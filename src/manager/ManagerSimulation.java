@@ -37,12 +37,25 @@ public class ManagerSimulation {
 	 * List of panels corresponding to the search
 	 */
 	private Panel searchedPanel;
+	
+	/**
+	 * result message
+	 */
+	public String resultString;
 
 	/**
 	 * Default constructor
 	 */
 	public ManagerSimulation() {
 
+	}
+	
+	public String getResultString(){
+		return resultString;
+	}
+	
+	public void setResultString(String resultString){
+		this.resultString = resultString;
 	}
 
 	/**
@@ -66,10 +79,18 @@ public class ManagerSimulation {
 					searchedPanel = panels.get(0);
 					HttpUtils.redirect("simulateResults");
 				}
+				else {
+					resultString = "Aucun panneau ne correspond à votre recherche";
+				}
 			}
+			else {
+				resultString = "La date de début doit être antérieure à la date de fin";
+			}
+			
 			
 		} catch (ParseException e) {
 			System.out.println("Impossible de parser les dates dans un bon format");
+			resultString = "Problème avec le format de date";
 		}
 		
 		
