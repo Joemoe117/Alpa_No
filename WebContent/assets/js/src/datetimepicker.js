@@ -1,6 +1,6 @@
 $(function() {
-	$('#j_idt24\\:checkInDate').datetimepicker();
+	$('.checkInDate').datetimepicker();
 });
 $(function() {
-	$('#j_idt24\\:checkOutDate').datetimepicker();
+	$('.checkOutDate').datetimepicker();
 });

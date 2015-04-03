@@ -31,13 +31,11 @@
 					</h:selectManyMenu>
 
 					<h:outputLabel value="Date de début :" />
-					<h:inputText id="checkInDate" value="#{managerPanel.beginDate}">
-						<f:convertDateTime pattern="yyyy-MM-dd" />
+					<h:inputText class="checkInDate" value="#{managerPanel.beginDate}">
 					</h:inputText>
 
 					<h:outputLabel value="Date de fin :" />
-					<h:inputText id="checkOutDate" value="#{managerPanel.endDate}">
-						<f:convertDateTime pattern="yyyy-MM-dd" />
+					<h:inputText class="checkOutDate" value="#{managerPanel.endDate}">
 					</h:inputText>
 
 					<!-- Bouton submit -->
