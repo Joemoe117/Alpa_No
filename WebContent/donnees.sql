@@ -35,6 +35,18 @@ INSERT INTO flight (id_plane, description) VALUES (8, 'Marseille-France -> Parad
 INSERT INTO flight (id_plane, description) VALUES (4, 'Phoenix-États Unis -> New York-États Unis Unis (Sky Arilines)');
 INSERT INTO flight (id_plane, description) VALUES (9, 'Madrid-Espagne -> Rome-Italie (Easyjet)');
 
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (1, '2015-04-03 10:00:00', '2015-04-04 15:00:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (2, '2015-04-03 06:00:00', '2015-04-03 12:00:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (3, '2015-04-03 13:00:00', '2015-04-03 14:00:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (4, '2015-04-03 07:00:00', '2015-04-03 13:00:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (5, '2015-04-03 06:00:00', '2015-04-03 17:00:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (6, '2015-04-03 15:30:00', '2015-04-03 17:00:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (7, '2015-04-03 20:05:00', '2015-04-03 23:35:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (8, '2015-04-03 10:30:00', '2015-04-03 12:30:00');
+INSERT INTO panel (id_flight, date_begin, date_end) VALUES (9, '2015-04-03 08:15:00', '2015-04-03 12:15:00');
+
+
+
 
 
 
