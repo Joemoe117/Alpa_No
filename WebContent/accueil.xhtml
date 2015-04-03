@@ -7,20 +7,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
->
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<ui:define name="title">
-			<title>Page d'accueil</title>
+		<title>Page d'accueil</title>
 	</ui:define>
 
 	<ui:define name="body">
-	
-		
-			<h1>Page d'accueil</h1>
-			
-			
-
+<h:form>
+		<div class="row"></div>
+		<div class="container">
+			<div class="leftContainer">
+				<div class="flightsContainer">
+					<a href="listFlights.xhtml"><img src="assets/images/volsA.png" /></a>
+				</div>
+				<div class="hotelsContainer">
+					<a href="listHotels.xhtml"><img src="assets/images/hotelsA.png" /></a>
+				</div>
+			</div>
+			<div class="simulationContainer">
+				<a href="simulation.xhtml"><img src="assets/images/simulationA.png" /></a>
+			</div>
+		</div>
+</h:form>
 	</ui:define>
 
 </ui:composition>
