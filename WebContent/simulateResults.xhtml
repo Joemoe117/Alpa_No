@@ -25,7 +25,9 @@
 					</p>
 				</div>
 				<div class="col s6">
-					<p><b>Date de fin : </b>#{managerSimulation.inputDateEnd}</p>
+					<p>
+						<b>Date de fin : </b>#{managerSimulation.inputDateEnd}
+					</p>
 				</div>
 			</div>
 			<div class="row">
@@ -40,6 +42,17 @@
 							<h6>Horaires</h6>
 							<p>Départ : #{managerSimulation.searchedPanel.dateBegin}</p>
 							<p>Arrivé : #{managerSimulation.searchedPanel.dateEnd}</p>
+							<h5>Hotels disponibles :</h5>
+							<h:dataTable value="#{managerSimulation.searchedPanel.hotels}"
+								var="o" class="bordered">
+
+								<h:column>
+									<f:facet name="Hotel"></f:facet>
+									#{o.name}
+								</h:column>
+
+
+							</h:dataTable>
 						</div>
 						<div class="card-action">
 							<a href="#">Modifier</a>

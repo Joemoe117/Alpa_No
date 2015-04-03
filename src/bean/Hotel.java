@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,8 +30,12 @@ public class Hotel {
     private String name;
     
     @OneToMany
-    @JoinColumn(name = "id_hotel")
-    private Collection<LinkPanelHotel> panels;
+    @JoinTable(
+        	name = "link_panel_hotel",
+        	joinColumns= @JoinColumn(name="id_hotel"), 
+        	inverseJoinColumns = @JoinColumn(name="id_panel")
+        )
+    private Collection<Panel> panels;
 
     /**
      * Default constructor
@@ -55,11 +60,13 @@ public class Hotel {
         this.name = name;
     }
 
-    public Collection<LinkPanelHotel> getLinkPanelHotels() {
-        return panels;
-    }
+	public Collection<Panel> getPanels() {
+		return panels;
+	}
 
-    public void setLinkPanelHotels(Collection<LinkPanelHotel> panels) {
-        this.panels = panels;
-    }
+	public void setPanels(Collection<Panel> panels) {
+		this.panels = panels;
+	}
+
+    
 }
