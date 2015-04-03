@@ -51,13 +51,10 @@ public class ManagerSimulation {
 	public void loadPanelsForPeriod() {
 
 		try {
-			String pattern = "yyyy-MM-dd HH:mm:ss";
+			String pattern = "yyyy/MM/dd HH:mm";
 			SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.FRANCE);
-			Date dateBegin = sdf.parse("2010-02-23 16:00:00");
-			Date dateEnd = sdf.parse("2020-02-23 18:00:00");
-			
-			inputDateBegin = "2010-02-23 16:00:00";
-			inputDateEnd = "2010-02-23 18:00:00";
+			Date dateBegin = sdf.parse(inputDateBegin);
+			Date dateEnd = sdf.parse(inputDateEnd);
 			
 			boolean isOk = checkDates(dateBegin, dateEnd);
 			
