@@ -149,8 +149,9 @@ public class ManagerPanel {
 	
 		// update existing panel
 		if (panel != null){
-			beginDate = panel.getDateBegin().toString();
-			endDate = panel.getDateEnd().toString();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+			beginDate = sdf.format(panel.getDateBegin());
+			endDate = sdf.format(panel.getDateEnd());
 			
 			List<Integer> selectedHotels = new ArrayList<Integer>();
 			for (Hotel hotel : panel.getHotels()) {
